@@ -21,3 +21,17 @@ after_sucess:
   - docker push iporat08/multi-nginx
   - docker push iporat08/multi-worker
   - docker push iporat08/multi-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: Multidocker-env
+  bucket_name: elasticbeanstalk-us-east-2-809837503369
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+    
